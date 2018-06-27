@@ -8,10 +8,10 @@ import '@/locale';
 import 'iview/dist/styles/iview.css';
 import VueI18n from 'vue-i18n';
 import util from './libs/util';
-
+import axios from 'axios';
 Vue.use(VueI18n);
 Vue.use(iView);
-
+Vue.prototype.$http = axios;
 new Vue({
     el: '#app',
     router: router,

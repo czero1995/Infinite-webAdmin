@@ -24,7 +24,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+import path from '../../../mixins/common.js'
+
 export default {
     name: 'manage',
     data () {
@@ -36,7 +37,7 @@ export default {
     },
     methods: {
         getData () {
-            axios.get(`http://127.0.0.1:3000/api/user/users`,{
+            this.$http.get(`${path}user/users`,{
                 })
                 .then(res => {
                 this.dataList = [...this.dataList, ...res.data.data];
@@ -47,7 +48,7 @@ export default {
             });
         },
         onDelete(index,phoneNumber){
-            axios.post(`http://127.0.0.1:3000/api/user/delete`,{
+            this.$http.post(`${path}user/delete`,{
                 phoneNumber:phoneNumber
                 })
                 .then(res => {

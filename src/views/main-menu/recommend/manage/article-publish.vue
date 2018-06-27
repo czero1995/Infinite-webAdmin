@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import path from '../../../../mixins/common.js'
 export default {
     name: 'manage',
     data () {
@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         getData () {
-            axios.post(`http://127.0.0.1:3000/api/recommend/all`,{
+            this.$http.post(`${path}recommend/all`,{
                 pagenum:this.pagenum,
                 pagesize:this.pagesize,
                 })
@@ -49,7 +49,7 @@ export default {
             });
         },
         onDelete(index,id){
-            axios.post(`http://127.0.0.1:3000/api/recommend/delete`,{
+            this.$http(`${path}recommend/delete`,{
                 id:id
                 })
                 .then(res => {
@@ -104,6 +104,10 @@ export default {
     div{
         flex:1;
     }
+    
+}
+.item div:nth-of-type(2){
+    flex:3;
 }
 .manage_btn{
     height: 20px;

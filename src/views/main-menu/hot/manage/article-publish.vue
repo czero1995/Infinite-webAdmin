@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import path from '../../../../mixins/common.js'
 export default {
     name: 'manage',
     data () {
@@ -36,8 +36,9 @@ export default {
     },
     methods: {
         getData () {
-            axios.get(`http://127.0.0.1:3000/api/hot/all`)
+            this.$http.get(`${path}hot/all`)
                 .then(res => {
+                console.log('res',res)
                 this.dataList = res.data.data
                 console.log(this.dataList);
                 })
@@ -46,7 +47,7 @@ export default {
             });
         },
         onDelete(index,id){
-            axios.post(`http://127.0.0.1:3000/api/hot/delete`,{
+            this.$http.post(`${path}hot/delete`,{
                 id:id
                 })
                 .then(res => {
@@ -101,6 +102,9 @@ export default {
     div{
         flex:1;
     }
+}
+.item div:nth-of-type(2){
+    flex:3;
 }
 .manage_btn{
     height: 20px;

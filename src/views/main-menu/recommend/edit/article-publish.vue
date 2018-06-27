@@ -30,8 +30,8 @@
 
 <script>
 import tinymce from 'tinymce';
-import axios from 'axios';
 import * as qiniu from 'qiniu-js'
+import path from '../../../../mixins/common.js'
 export default {
     name: 'artical-publish',
     data () {
@@ -167,7 +167,7 @@ export default {
         handlePreview () {
             const that = this
             console.log('aaaaa',that.dataList)
-            axios.post(`http://127.0.0.1:3000/api/recommend/update`,{
+            this.$http.post(`${path}recommend/update`,{
                 id:this.$route.query.id,
                 title:that.dataList.title,
                 post:that.dataList.post,
@@ -178,7 +178,7 @@ export default {
         },
         getData(){
             console.log('id',this.$route.query.id)
-            axios.get(`http://127.0.0.1:3000/api/recommend/detail?id=${this.$route.query.id}`,{
+            this.$http.get(`${path}recommend/detail?id=${this.$route.query.id}`,{
            }).then(res => {
                this.dataList = res.data.data
                 console.log('请求编辑接口',res)
@@ -205,7 +205,7 @@ export default {
             localStorage.tagsList = JSON.stringify(this.articleTagSelected); // 本地存储文章标签列表
         },
         getToken(){
-             axios.post('http://127.0.0.1:3000/api/uptoken').then(res => {
+             this.$http.post('${path}api/uptoken').then(res => {
                  this.qiuniuToken = res.data.token;
                  this.qiniuDomain = res.data.domain;
                 console.log(res)
