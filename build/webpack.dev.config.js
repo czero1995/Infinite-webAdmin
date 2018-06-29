@@ -45,5 +45,22 @@ module.exports = merge(webpackBaseConfig, {
                 'text-editor.vue'
             ]
         })
-    ]
+    ],
+    //设置跨域代理
+    devServer: {
+        historyApiFallback: true,
+        hot: true,
+        inline: true,
+        stats: { colors: true },
+        proxy: {
+            //匹配代理的url
+            '/api': {
+            // 目标服务器地址
+              target: 'http://127.0.0.1:3000/',
+              //路径重写
+              pathRewrite: {'^/api' : '/api'},
+              changeOrigin: true
+            }
+         }
+    }
 });

@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         getData () {
-            this.$http.post(`${path}recommend/all`,{
+            this.$http.post(`api/recommend/all`,{
                 pagenum:this.pagenum,
                 pagesize:this.pagesize,
                 })
@@ -49,7 +49,7 @@ export default {
             });
         },
         onDelete(index,id){
-            this.$http(`${path}recommend/delete`,{
+            this.$http(`api/recommend/delete`,{
                 id:id
                 })
                 .then(res => {

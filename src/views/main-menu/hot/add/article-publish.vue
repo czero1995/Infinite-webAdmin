@@ -166,7 +166,7 @@ export default {
             console.log(this.articleTitleSecond)
             console.log(this.articleContent)
             
-           this.$http.post(`${path}hot/add`,{
+           this.$http.post(`api/hot/add`,{
                    title: this.articleTitle,
                    content: this.articleContent,
                    post: this.imgUrl
@@ -196,7 +196,7 @@ export default {
             localStorage.tagsList = JSON.stringify(this.articleTagSelected); // 本地存储文章标签列表
         },
         getToken(){
-             this.$http.post(`${path}uptoken`).then(res => {
+             this.$http.post(`api/uptoken`).then(res => {
                  this.qiuniuToken = res.data.token;
                  this.qiniuDomain = res.data.domain;
                 console.log(res)

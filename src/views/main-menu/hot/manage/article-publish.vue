@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         getData () {
-            this.$http.get(`${path}hot/all`)
+            this.$http.get(`api/hot/all`)
                 .then(res => {
                 console.log('res',res)
                 this.dataList = res.data.data
@@ -47,7 +47,7 @@ export default {
             });
         },
         onDelete(index,id){
-            this.$http.post(`${path}hot/delete`,{
+            this.$http.post(`api/hot/delete`,{
                 id:id
                 })
                 .then(res => {
