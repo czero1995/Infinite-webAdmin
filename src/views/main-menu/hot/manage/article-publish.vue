@@ -24,96 +24,96 @@
 </template>
 
 <script>
-import path from '../../../../mixins/common.js'
+import path from "../../../../mixins/common.js";
 export default {
-    name: 'manage',
-    data () {
-        return {
-            dataList:[],
-            pagenum:0,
-            pagesize:10
-        };
+  name: "manage",
+  data() {
+    return {
+      dataList: [],
+      pagenum: 0,
+      pagesize: 10
+    };
+  },
+  methods: {
+    getData() {
+      this.$http
+        .get(`${this.$baseURL}hot/all`)
+        .then(res => {
+          console.log("res", res);
+          this.dataList = res.data.data;
+          console.log(this.dataList);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
-    methods: {
-        getData () {
-            this.$http.get(`api/hot/all`)
-                .then(res => {
-                console.log('res',res)
-                this.dataList = res.data.data
-                console.log(this.dataList);
-                })
-                .catch(function(error) {
-                console.log(error);
-            });
-        },
-        onDelete(index,id){
-            this.$http.post(`api/hot/delete`,{
-                id:id
-                })
-                .then(res => {
-                    console.log(res)
-                    this.dataList.splice('index',1)
-                })
-                .catch(function(error) {
-                console.log(error);
-            });
-
-        },
-        onEdit(id){
-            this.$router.push({
-                path:`./edit?id=${id}`
-            })
-        }
-        
+    onDelete(index, id) {
+      this.$http
+        .post(`${this.$baseURL}hot/delete`, {
+          id: id
+        })
+        .then(res => {
+          console.log(res);
+          this.dataList.splice("index", 1);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
-    created () {
-        this.getData();
+    onEdit(id) {
+      this.$router.push({
+        path: `./edit?id=${id}`
+      });
     }
+  },
+  created() {
+    this.getData();
+  }
 };
 </script>
 <style lang="less" scope>
-.flex{
-    display:flex;
+.flex {
+  display: flex;
 }
-.flex_between{
-    display: flex;
-    align-content: center;
-    justify-content: space-between; 
-    text-align: center;
+.flex_between {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  text-align: center;
 }
-.title{
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding: 10px;
-    div{
-        flex:1;
-    }
+.title {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+  div {
+    flex: 1;
+  }
 }
-.item{
-    height: 70px;
-    line-height: 60px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-    box-sizing: border-box;
-    img{
-        width: 60px;
-        height: 60px;
-    }
-    div{
-        flex:1;
-    }
+.item {
+  height: 70px;
+  line-height: 60px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+  img {
+    width: 60px;
+    height: 60px;
+  }
+  div {
+    flex: 1;
+  }
 }
-.item div:nth-of-type(2){
-    flex:3;
+.item div:nth-of-type(2) {
+  flex: 3;
 }
-.manage_btn{
-    height: 20px;
-    line-height: 20px;
-    padding: 0;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 20px;
-    margin-left: 15px;
-    margin-right: 15px;
+.manage_btn {
+  height: 20px;
+  line-height: 20px;
+  padding: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 </style>

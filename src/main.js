@@ -9,9 +9,12 @@ import 'iview/dist/styles/iview.css';
 import VueI18n from 'vue-i18n';
 import util from './libs/util';
 import axios from 'axios';
+import common from './mixins/common';
 Vue.use(VueI18n);
 Vue.use(iView);
 Vue.prototype.$http = axios;
+Vue.prototype.$baseURL = common;
+
 new Vue({
     el: '#app',
     router: router,

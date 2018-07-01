@@ -167,7 +167,7 @@ export default {
         handlePreview () {
             const that = this
             console.log('aaaaa',that.dataList)
-            axios.post(`api/recommend/update`,{
+            axios.post(`${this.$baseURL}recommend/update`,{
                 id:this.$route.query.id,
                 title:that.dataList.title,
                 post:that.dataList.post,
@@ -178,7 +178,7 @@ export default {
         },
         getData(){
             console.log('id',this.$route.query.id)
-            axios.get(`api/recommend/detail?id=${this.$route.query.id}`,{
+            axios.get(`${this.$baseURL}recommend/detail?id=${this.$route.query.id}`,{
            }).then(res => {
                this.dataList = res.data.data
                 console.log('请求编辑接口',res)
@@ -205,7 +205,7 @@ export default {
             localStorage.tagsList = JSON.stringify(this.articleTagSelected); // 本地存储文章标签列表
         },
         getToken(){
-             axios.post('api/uptoken').then(res => {
+             axios.post('${this.$baseURL}uptoken').then(res => {
                  this.qiuniuToken = res.data.token;
                  this.qiniuDomain = res.data.domain;
                 console.log(res)

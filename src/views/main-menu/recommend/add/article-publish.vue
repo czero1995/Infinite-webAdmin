@@ -172,7 +172,7 @@ export default {
       console.log(this.articleContent);
 
       this.$http
-        .post(`api/recommend/add`, {
+        .post(`${this.$baseURL}recommend/add`, {
           title: this.articleTitle,
           content: this.articleContent,
           post: this.imgUrl
@@ -203,7 +203,7 @@ export default {
       localStorage.tagsList = JSON.stringify(this.articleTagSelected); // 本地存储文章标签列表
     },
     getToken() {
-      this.$http.post(`api/uptoken`).then(res => {
+      this.$http.post(`${this.$baseURL}uptoken`).then(res => {
         this.qiuniuToken = res.data.token;
         this.qiniuDomain = res.data.domain;
         console.log(res);

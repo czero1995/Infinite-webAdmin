@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         getData () {
-            this.$http.get(`api/user/users`,{
+            this.$http.get(`${this.$baseURL}user/users`,{
                 })
                 .then(res => {
                 this.dataList = [...this.dataList, ...res.data.data];
@@ -48,7 +48,7 @@ export default {
             });
         },
         onDelete(index,phoneNumber){
-            this.$http.post(`api/user/delete`,{
+            this.$http.post(`${this.$baseURL}user/delete`,{
                 phoneNumber:phoneNumber
                 })
                 .then(res => {
