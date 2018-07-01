@@ -11,14 +11,14 @@ const fs = require('fs');
 const path = require('path');
 const package = require('../package.json');
 
-fs.open('./build/env.js', 'w', function(err, fd) {
+fs.open('./build/env.js', 'w', function (err, fd) {
     const buf = 'export default "production";';
-    fs.write(fd, buf, 0, buf.length, 0, function(err, written, buffer) {});
+    fs.write(fd, buf, 0, buf.length, 0, function (err, written, buffer) { });
 });
 
 module.exports = merge(webpackBaseConfig, {
     output: {
-        publicPath: 'https://iview.github.io/iview-admin/dist/',  // 修改 https://iv...admin 这部分为你的服务器域名 
+        publicPath: 'http://infinite.czero.cn/Infinite-webAdmin/dist/',  // 修改 https://iv...admin 这部分为你的服务器域名 
         filename: '[name].[hash].js',
         chunkFilename: '[name].[hash].chunk.js'
     },
@@ -70,10 +70,10 @@ module.exports = merge(webpackBaseConfig, {
                 from: 'src/views/my-components/text-editor/tinymce'
             }
         ], {
-            ignore: [
-                'text-editor.vue'
-            ]
-        }),
+                ignore: [
+                    'text-editor.vue'
+                ]
+            }),
         new HtmlWebpackPlugin({
             title: 'iView admin v' + package.version,
             favicon: './td_icon.ico',

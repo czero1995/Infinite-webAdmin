@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HappyPack = require('happypack');
 var happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
-function resolve (dir) {
+function resolve(dir) {
     return path.join(__dirname, dir);
 }
 module.exports = {
@@ -57,7 +57,7 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader?minimize','autoprefixer-loader', 'less-loader'],
+                    use: ['css-loader?minimize', 'autoprefixer-loader', 'less-loader'],
                     fallback: 'style-loader'
                 }),
             },
@@ -65,10 +65,10 @@ module.exports = {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                 loader: 'url-loader?limit=1024'
             },
-            {
-                test: /\.(html|tpl)$/,
-                loader: 'html-loader'
-            }
+            // {
+            //     test: /\.(html|tpl)$/,
+            //     loader: 'html-loader'
+            // }
         ]
     },
     plugins: [
