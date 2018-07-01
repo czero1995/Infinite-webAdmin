@@ -18,7 +18,7 @@ fs.open('./build/env.js', 'w', function (err, fd) {
 
 module.exports = merge(webpackBaseConfig, {
     output: {
-        publicPath: 'http://infinite.czero.cn/Infinite-webAdmin/dist/',  // 修改 https://iv...admin 这部分为你的服务器域名 
+        publicPath: './',  // 修改 https://iv...admin 这部分为你的服务器域名 
         filename: '[name].[hash].js',
         chunkFilename: '[name].[hash].chunk.js'
     },
@@ -77,7 +77,7 @@ module.exports = merge(webpackBaseConfig, {
         new HtmlWebpackPlugin({
             title: 'iView admin v' + package.version,
             favicon: './td_icon.ico',
-            filename: '../index.html',
+            filename: './index.html',
             template: '!!ejs-loader!./src/template/index.ejs',
             inject: false
         })

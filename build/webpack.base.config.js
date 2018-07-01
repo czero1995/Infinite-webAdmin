@@ -14,7 +14,7 @@ module.exports = {
         'vender-exten': '@/vendors/vendors.exten.js'
     },
     output: {
-        path: path.resolve(__dirname, '../dist/dist')
+        path: path.resolve(__dirname, '../dist')
     },
     module: {
         rules: [
@@ -65,10 +65,10 @@ module.exports = {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
                 loader: 'url-loader?limit=1024'
             },
-            // {
-            //     test: /\.(html|tpl)$/,
-            //     loader: 'html-loader'
-            // }
+            {
+                test: /\.(html|tpl)$/,
+                loader: 'html-loader'
+            }
         ]
     },
     plugins: [
